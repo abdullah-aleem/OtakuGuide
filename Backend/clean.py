@@ -1,7 +1,7 @@
 import pandas as pd 
 import json 
 df=pd.read_csv('anime.csv')
-df=df.drop(columns=['episodes','members','type'])
+df=df.drop(columns=['episodes','members','type','anime_id'])
 genre=df['genre']
 Unique_genre=[]
 for x in genre:
@@ -14,7 +14,7 @@ for x in genre:
     
 Unique_genre=list(set(Unique_genre))
 df=df.dropna(how='any')
-
+df['anime_id']=df.index
 data={}
 
 data['genre']=Unique_genre
